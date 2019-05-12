@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+</head>
+<body>
+
+<h1 th:text="${title}"></h1>
+
+<div style="max-width: 800px; margin: 50px auto" >
+    <canvas id="myChart" width="1600" height="900"></canvas>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+<script th:inline="javascript">
+
+    new Chart(document.getElementById("myChart"), {
+        type: 'bar',
+        data: {
+            labels: [[${dataMap.keySet()}]],
+            datasets: [
+                {
+                    label: "Population (millions)",
+                    backgroundColor: [[${labels}]],
+                    data: [[${dataMap.values()}]]
+                }
+            ]
+        },
+        options: {
+            legend: { display: false },
+            scales: {
+                yAxes: [{
+                    ticks: {beginAtZero: true}
+                }]
+            }
+        }
+    });
+
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+</head>
+<body>
+
+    <h1 th:text="${title}"></h1>
+
+    <table>
+        <tr>
+            <th width="50px">ID</th>
+            <th width="50px">Kolor</th>
+            <th width="200px">Data</th>
+        </tr>
+        <tr th:each="selectedColor : ${selectedColors}">
+            <td th:text="${selectedColor.id}"></td>
+            <td th:text="${selectedColor.color}"></td>
+            <td th:text="${selectedColor.ctime}"></td>
+        </tr>
+
+    </table>
+
+</body>
+</html>
